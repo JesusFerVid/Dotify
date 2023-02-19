@@ -33,7 +33,7 @@ public class Song {
 	private Artist artist;
 
 	@ManyToOne
-	@JoinColumn(name = "album_id")
+	@JoinColumn(name = "album")
 	private Album album;
 
 	@Override

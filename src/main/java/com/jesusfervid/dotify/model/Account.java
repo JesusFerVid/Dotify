@@ -11,12 +11,12 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "account")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
@@ -37,7 +37,10 @@ public class User {
 	@Column(name = "registry_date", nullable = false)
 	private LocalDate registry_date;
 
-	@OneToMany(mappedBy = "user", orphanRemoval = true)
+	@Column(name = "is_superuser", nullable = false)
+	private Boolean isSuperuser = false;
+
+	@OneToMany(mappedBy = "account", orphanRemoval = true)
 	private Set<Playlist> playlists = new LinkedHashSet<>();
 
 }

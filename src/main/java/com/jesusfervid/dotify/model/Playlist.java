@@ -25,11 +25,11 @@ public class Playlist {
 	private String name;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "user", nullable = false)
-	private User user;
+	@JoinColumn(name = "account", nullable = false)
+	private Account account;
 
 	@ManyToMany
-	@JoinTable(name = "contains",
+	@JoinTable(name = "playlist_song",
 		joinColumns = @JoinColumn(name = "playlist"),
 		inverseJoinColumns = @JoinColumn(name = "song"))
 	private Set<Song> songs = new LinkedHashSet<>();
