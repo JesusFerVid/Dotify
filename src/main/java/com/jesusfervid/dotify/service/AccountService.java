@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AccountService {
@@ -15,6 +16,10 @@ public class AccountService {
 
 	public AccountService(AccountRepository repository) {
 		this.repository = repository;
+	}
+
+	public List<Account> findAll() {
+		return repository.findAll();
 	}
 
 	public List<Account> findAll(Integer pageNo, Integer pageSize) {
@@ -25,11 +30,19 @@ public class AccountService {
 		return null;
 	}
 
-	public Account createAccount(Account user) {
+	public Optional<Account> findById(Long id){
+		return repository.findById(id);
+	}
+
+	public Optional<Account> findByUsername(String username) {
+		return repository.findByUsername(username);
+	}
+
+	public Account create(Account user) {
 		return repository.save(user);
 	}
 
-	public Account updateAccount(Account user) {
+	public Account update(Account user) {
 		return repository.save(user);
 	}
 

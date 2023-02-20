@@ -35,7 +35,7 @@ public class Account {
 	private LocalDate birthday;
 
 	@Column(name = "registry_date", nullable = false)
-	private LocalDate registry_date;
+	private LocalDate registryDate;
 
 	@Column(name = "is_superuser", nullable = false)
 	private Boolean isSuperuser = false;
