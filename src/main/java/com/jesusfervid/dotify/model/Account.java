@@ -1,5 +1,6 @@
 package com.jesusfervid.dotify.model;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,8 @@ public class Account {
 	private String username;
 
 	@Column(name = "password", nullable = false)
+	// En una API real, esto no se mostraría, pero entonces ¿cómo podría Patri iniciar sesión?
+	// @JsonIgnore
 	private String password;
 
 	@Column(name = "email", nullable = false, unique = true)
@@ -41,6 +44,7 @@ public class Account {
 	private Boolean isSuperuser = false;
 
 	@OneToMany(mappedBy = "account", orphanRemoval = true)
+	@JsonIncludeProperties({"id", "name"})
 	private Set<Playlist> playlists = new LinkedHashSet<>();
 
 }

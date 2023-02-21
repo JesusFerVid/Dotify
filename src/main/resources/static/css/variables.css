@@ -1,0 +1,17 @@
+@import "material.css";
+
+:root{
+	--text-color: black;
+	--text-color-dim: #5F6368;
+	
+	--accent-color: #1A73E8;
+	--accent-color-dim: var(--blue-300);
+	
+	--border-color: #DADCE0;
+	
+	--bg: var(--grey-100);
+	--bg-header: white;
+	--bg-footer: black;
+	
+	--header-height: 5em;
+}

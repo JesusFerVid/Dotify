@@ -1,0 +1,25 @@
+table {
+
+}
+
+    th, td {
+        padding: 10px;
+    }
+
+    tbody>tr {
+        transition: .3s all ease-in-out;
+    } tbody>tr:hover {
+      background: var(--grey-200);
+    }
+
+    thead {
+        border-bottom: 2px solid var(--border-color);
+    }
+
+        thead th {
+            font-weight: bold;
+        }
+
+    tbody tr {
+        border-bottom: 1px solid var(--border-color);
+    }

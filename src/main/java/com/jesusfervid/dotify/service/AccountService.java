@@ -38,12 +38,12 @@ public class AccountService {
 		return repository.findByUsername(username);
 	}
 
-	public Account create(Account user) {
-		return repository.save(user);
+	public Account create(Account account) {
+		return repository.save(account);
 	}
 
-	public Account update(Account user) {
-		return repository.save(user);
+	public Account update(Account account) {
+		return repository.save(account);
 	}
 
 	public boolean delete(Long id) {

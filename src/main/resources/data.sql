@@ -229,9 +229,9 @@ INTO
   playlist
   (name, account)
 VALUES
-  ('Super Sonic Songs', 6),
-  ('Workout', 2),
-  ('EDM', 1);
+  ('Super Sonic Songs', 7),
+  ('Workout', 3),
+  ('EDM', 2);
 
 -- Playlist-Song associative table
 INSERT

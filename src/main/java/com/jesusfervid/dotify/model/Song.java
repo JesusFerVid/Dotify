@@ -1,5 +1,6 @@
 package com.jesusfervid.dotify.model;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,10 +31,12 @@ public class Song {
 
 	@ManyToOne
 	@JoinColumn(name = "artist")
+	@JsonIncludeProperties({"id", "name"})
 	private Artist artist;
 
 	@ManyToOne
 	@JoinColumn(name = "album")
+	@JsonIncludeProperties({"id", "name"})
 	private Album album;
 
 	@Override

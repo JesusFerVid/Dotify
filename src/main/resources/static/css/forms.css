@@ -1,0 +1,128 @@
+form {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+		.text-row {
+			display: grid;
+			grid-template-columns: .5fr;
+		}
+
+			.text-group {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.text-group input,
+			.text-group textarea {
+				outline: none;
+				height: 48px;
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				padding: 10px;
+				font-family: inherit;
+				font-size: 1em;
+				transition: border .3s ease-in-out;
+				}	.text-group input:focus,
+					.text-group textarea:focus {
+					border: 2px solid var(--accent-color);
+				}
+
+				.text-group textarea {
+					width: 100%;
+					resize: vertical;
+				}	.short { min-height: 80px; }
+					.medium { min-height: 140px; }
+					.tall { min-height: 210px; }
+
+
+				.text-group label {
+					position: absolute;
+					top: -11px;
+					left: 10px;
+					z-index: 1;
+					padding: 0px 6px;
+					background-color: white;
+					transition: all .3s ease-in-out;
+				}	.text-group input:focus + label,
+					.text-group textarea:focus + label{
+					padding: 0px 10px;
+					font-size: .9em;
+					color: var(--accent-color);
+				}
+
+		input[type='radio'] {
+			accent-color: var(--accent-color);
+			cursor: pointer;
+		}
+
+		.radio-row {
+			width: 50%;
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+
+			.radio-row .radio-group,
+			.radio-row .radio-group * {
+				cursor: pointer;
+			}
+
+
+		.full-width{
+			grid-template-columns: 1fr;
+		}
+
+		.double-col {
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+		}
+
+		.triple-col {
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 20px;
+		}
+
+		.buttons{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+			.buttons input[type='submit'],
+			.buttons input[type='reset'] {
+				height: 48px;
+				border: none;
+				padding: 10px;
+				font: inherit;
+				font-weight: 500;
+				cursor: pointer;
+				transition: all .3s ease-in-out;
+			}
+
+			.buttons input[type='submit']{
+				min-width: 25%;
+				border-radius: 6px;
+				background-color: var(--accent-color);
+				color: white;
+			}	.buttons input[type='submit']:hover {
+				background-color: var(--accent-color-dim);
+			}
+
+			.buttons input[type='reset']{
+				border:none;
+				color: var(--accent-color);
+				background: none;
+			}	.buttons input[type='reset']:hover {
+				color: var(--accent-color-dim);
+			}
+
+
+.text-group input:required + label::after,
+.text-group textarea:required + label::after,
+.required::after {
+	margin-left: 3px;
+	color: var(--red);
+	content: "*";
+}

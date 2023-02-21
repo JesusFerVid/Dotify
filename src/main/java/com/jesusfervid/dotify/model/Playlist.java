@@ -1,5 +1,6 @@
 package com.jesusfervid.dotify.model;
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class Playlist {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "account", nullable = false)
+	@JsonIncludeProperties({"id", "username"})
 	private Account account;
 
 	@ManyToMany
