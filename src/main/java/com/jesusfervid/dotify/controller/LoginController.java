@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/auth")
 public class LoginController {
 	private final AccountService service;
 
@@ -19,13 +19,13 @@ public class LoginController {
 		this.service = service;
 	}
 
-	@GetMapping
+	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("account", new Account());
 		return "account/login";
 	}
 
-	@PostMapping("/check")
+	@PostMapping("/login/check")
 	public String check(@ModelAttribute("account") Account account) {
 		if (account != null) {
 			Account found = service.findByUsername(account.getUsername()).orElse(null);
@@ -38,6 +38,12 @@ public class LoginController {
 				}
 			}
 		}
-		return "redirect:/login";
+		return "redirect:/auth/login";
+	}
+
+	@GetMapping("/logout")
+	public String logout() {
+		App.setLoggedAccount(null);
+		return "redirect:/account/all";
 	}
 }

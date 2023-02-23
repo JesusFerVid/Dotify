@@ -1,19 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
     <title>Profile</title>
 </head>
 <body>
     <main>
         <h1>User profile</h1>
         <section>
-            <p>Data here...</p>
+            <h2>Actions</h2>
+            <p th:text="'Welcome back, ' + ${account.username}"/>
+            <p><a th:href="@{/auth/logout}">Logout</a></p>
+            <p><a th:href="@{'/api/account/export/json/' + ${account.username}}">Export user data to JSON</a></p>
         </section>
     </main>
 </body>

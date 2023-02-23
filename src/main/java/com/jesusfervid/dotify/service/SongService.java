@@ -50,4 +50,17 @@ public class SongService {
 	public Optional<Song> findLongest() {
 		return repository.findFirstByOrderByDurationDesc();
 	}
+
+	public long count() {
+		return repository.count();
+	}
+
+	public long countByArtist(Long id) {
+		return repository.countByArtist_Id(id);
+	}
+
+
+	public long countByAlbum(Long id) {
+		return repository.countByAlbum_Id(id);
+	}
 }

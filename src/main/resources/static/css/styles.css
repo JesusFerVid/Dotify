@@ -28,6 +28,14 @@ abbr {
 	text-decoration: none;
 }
 
+a {
+	text-decoration: none;
+	color: var(--blue);
+	transition: color .3s ease-in-out;
+} a:hover {
+	color: var(--blue-300);
+}
+
 header {
 	position: fixed;
 	width: 100%;
@@ -111,6 +119,11 @@ section {
 		align-items: center;
 		gap: 10px;
 	}
+
+		h2:not(:first-of-type) {
+			margin-top: 20px;
+		}
+
 		h2 .material-icons {
 		font-size: inherit;
 	}

@@ -71,4 +71,16 @@ public class AccountRestController {
 	public boolean delete(@PathVariable("id") Long id) {
 		return service.delete(id);
 	}
+
+	@Operation(summary = "Export account to json and return path to file.")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Correct"),
+		@ApiResponse(responseCode = "403", description = "Forbidden"),
+		@ApiResponse(responseCode = "404", description = "Not found"),
+		@ApiResponse(responseCode = "500", description = "Internal Server Error")
+	})
+	@GetMapping("/export/json/{username}")
+	public String exportToJson(@PathVariable("username") String username) {
+		return service.exportToJson(username);
+	}
 }

@@ -139,8 +139,59 @@ public class SongRestController {
 		@ApiResponse(responseCode = "404", description = "Not found"),
 		@ApiResponse(responseCode = "500", description = "Internal Server Error")
 	})
-	@GetMapping("longest")
+	@GetMapping("stats/longest")
 	public Optional<Song> getLongest(){
 		return service.findLongest();
+	}
+
+	@Operation(summary = "Count songs")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Correct",
+			content = { @Content(
+				mediaType = "application/json" ,
+				schema = @Schema(implementation = Song.class)
+			)}
+		),
+		@ApiResponse(responseCode = "403", description = "Forbidden"),
+		@ApiResponse(responseCode = "404", description = "Not found"),
+		@ApiResponse(responseCode = "500", description = "Internal Server Error")
+	})
+	@GetMapping("stats/count")
+	public long getCount(){
+		return service.count();
+	}
+
+	@Operation(summary = "Count songs by artist")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Correct",
+			content = { @Content(
+				mediaType = "application/json" ,
+				schema = @Schema(implementation = Song.class)
+			)}
+		),
+		@ApiResponse(responseCode = "403", description = "Forbidden"),
+		@ApiResponse(responseCode = "404", description = "Not found"),
+		@ApiResponse(responseCode = "500", description = "Internal Server Error")
+	})
+	@GetMapping("stats/count/artist/{id}")
+	public long getCountByArtist(@PathVariable("id") Long id){
+		return service.countByArtist(id);
+	}
+
+	@Operation(summary = "Count songs by album")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "Correct",
+			content = { @Content(
+				mediaType = "application/json" ,
+				schema = @Schema(implementation = Song.class)
+			)}
+		),
+		@ApiResponse(responseCode = "403", description = "Forbidden"),
+		@ApiResponse(responseCode = "404", description = "Not found"),
+		@ApiResponse(responseCode = "500", description = "Internal Server Error")
+	})
+	@GetMapping("stats/count/album/{id}")
+	public long getCountByAlbum(@PathVariable("id") Long id){
+		return service.countByAlbum(id);
 	}
 }

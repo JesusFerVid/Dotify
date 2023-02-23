@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	@GetMapping
 	public String home() {
-		// Profile page redirects to login if not logged in
+		// Profile page redirects to all accounts if not logged in
 		return "redirect:/account/profile";
 	}
 }

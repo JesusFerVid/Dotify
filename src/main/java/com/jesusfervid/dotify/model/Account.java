@@ -46,5 +46,4 @@ public class Account {
 	@OneToMany(mappedBy = "account", orphanRemoval = true)
 	@JsonIncludeProperties({"id", "name"})
 	private Set<Playlist> playlists = new LinkedHashSet<>();
-
 }

@@ -5,20 +5,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/tables.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/tables.css}">
     <title>All accounts</title>
 </head>
 <body>
     <main>
         <h1>All accounts</h1>
         <section>
+            <h2>Account list</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Username</th>
+                        <th>Password</th>
                         <th>Email</th>
                         <th>Birthday</th>
                         <th>Registry date</th>
@@ -29,6 +30,7 @@
                     <tr th:each="account:${accounts}">
                         <td th:text="${account.id}"/>
                         <td th:text="${account.username}"/>
+                        <td th:text="${account.password}"/>
                         <td th:text="${account.email}"/>
                         <td th:text="${account.birthday}"/>
                         <td th:text="${account.registryDate}"/>
@@ -36,6 +38,8 @@
                     </tr>
                 </tbody>
             </table>
+            <h2>Login</h2>
+            <p>Try out <a th:href="@{/auth/login}">Login</a></p>
         </section>
     </main>
 </body>

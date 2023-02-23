@@ -30,6 +30,11 @@ dependencies {
 	// Documentation
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+	// To parse dates exporting JSON
+	implementation group: 'com.fasterxml.jackson.datatype',
+			name: 'jackson-datatype-jsr310',
+			version: '2.14.2'
 }
 
 tasks.named('test') {

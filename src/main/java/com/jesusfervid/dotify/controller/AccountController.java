@@ -27,9 +27,9 @@ public class AccountController {
 	public String profile(Model model) {
 		Account loggedAccount = App.getLoggedAccount();
 		if (loggedAccount != null) {
-			model.addAttribute("account", service.findById(loggedAccount.getId()));
+			model.addAttribute("account", loggedAccount);
 			return "account/profile";
 		}
-		return "redirect:/login";
+		return "redirect:/account/all";
 	}
 }
