@@ -1,6 +1,7 @@
 package com.jesusfervid.dotify.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.jesusfervid.dotify.model.Account;
 import com.jesusfervid.dotify.repository.AccountRepository;
 import org.springframework.data.domain.Page;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -61,11 +63,15 @@ public class AccountService {
 		Account account = repository.findByUsername(username).orElse(null);
 		if (account != null) {
 			try{
-				ObjectMapper mapper = new ObjectMapper();
+//				ObjectMapper mapper = new ObjectMapper();
+				ObjectWriter writer = new ObjectMapper().writer().withDefaultPrettyPrinter();
+				String json = writer.writeValueAsString(account);
 				// For dates
-				mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
+//				mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
 				File file = new File(account.getUsername() + ".json");
-				mapper.writeValue(file, account);
+//				mapper.writeValue(file, account);
+				FileWriter fw = new FileWriter(file);
+				fw.write(json);
 				return "Generated file: " + file.getPath();
 			} catch (IOException e) {
 				e.printStackTrace();
