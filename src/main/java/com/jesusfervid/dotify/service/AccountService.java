@@ -63,13 +63,9 @@ public class AccountService {
 		Account account = repository.findByUsername(username).orElse(null);
 		if (account != null) {
 			try{
-//				ObjectMapper mapper = new ObjectMapper();
 				ObjectWriter writer = new ObjectMapper().writer().withDefaultPrettyPrinter();
 				String json = writer.writeValueAsString(account);
-				// For dates
-//				mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
-				File file = new File(account.getUsername() + ".json");
-//				mapper.writeValue(file, account);
+				File file = new File("export/json/%s.json".formatted(account.getUsername()));
 				FileWriter fw = new FileWriter(file);
 				fw.write(json);
 				return "Generated file: " + file.getPath();
